@@ -3,9 +3,9 @@ from langchain.tools import BaseTool
 from langchain.prompts import PromptTemplate, ChatPromptTemplate
 from langchain.prompts.chat import HumanMessagePromptTemplate
 
-REACT_AGENT_PREFIX = """You are an AI assistant. You always stays on topic of the human input and does not diverge from it."""
+AGENT_PREFIX = """You are an AI assistant. You always stays on topic of the human input and does not diverge from it."""
 
-REACT_AGENT_FORMAT_INSTRUCTIONS = """You have access to the following tools:
+AGENT_FORMAT_INSTRUCTIONS = """You have access to the following tools:
 {tool_descriptions}
 
 Use the following format:
@@ -18,7 +18,7 @@ Observation: the result of the action
 Thought: I now know the final answer
 Final Answer: the final answer to the original input question"""
 
-REACT_AGENT_QUESTION_PROMPT = """Remember to respond with your knowledge when the question does not correspond to any tool.
+AGENT_QUESTION_PROMPT = """Remember to respond with your knowledge when the question does not correspond to any tool.
 
 The previous conversation is within the <chat_history></chat_history> XML tags below, where H refers to the human and A refers to the assistant:
 <chat_history>
@@ -28,15 +28,15 @@ The previous conversation is within the <chat_history></chat_history> XML tags b
 Always append "Final Answer:" when returning the final answer.
 Question: {question}"""
 
-REACT_AGENT_SUFFIX = """Thought: {agent_scratchpad}"""
+AGENT_SUFFIX = """Thought: {agent_scratchpad}"""
 
-def create_react_agent_prompt(
+def create_agent_prompt(
         tools: Sequence[BaseTool],
-        prefix: str = REACT_AGENT_PREFIX,
-        # context: str = REACT_AGENT_CONTEXT,
-        format_instructions: str = REACT_AGENT_FORMAT_INSTRUCTIONS,
-        question_prompt: str = REACT_AGENT_QUESTION_PROMPT,
-        suffix: str = REACT_AGENT_SUFFIX,
+        prefix: str = AGENT_PREFIX,
+        # context: str = AGENT_CONTEXT,
+        format_instructions: str = AGENT_FORMAT_INSTRUCTIONS,
+        question_prompt: str = AGENT_QUESTION_PROMPT,
+        suffix: str = AGENT_SUFFIX,
     ) -> PromptTemplate:
     
         human_prompt = PromptTemplate(
