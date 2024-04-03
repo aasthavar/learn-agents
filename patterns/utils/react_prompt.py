@@ -19,11 +19,8 @@ Thought: I now know the final answer
 Final Answer: the final answer to the original input question"""
 
 AGENT_QUESTION_PROMPT = """Remember to respond with your knowledge when the question does not correspond to any tool.
-
-The previous conversation is within the <chat_history></chat_history> XML tags below, where H refers to the human and A refers to the assistant:
-<chat_history>
+The previous conversation is below, where H refers to the human and A refers to the assistant:
 {chat_history}
-</chat_history>
 
 Always append "Final Answer:" when returning the final answer.
 Question: {question}"""
