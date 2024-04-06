@@ -21,7 +21,7 @@ load_dotenv(dotenv_path=dotenv_path)
 
 # define tools #TODO: add image related, aws services related tools 
 wikipedia = WikipediaQueryRun(
-    api_wrapper=WikipediaAPIWrapper(top_k_results=5),
+    api_wrapper=WikipediaAPIWrapper(top_k_results=1), # todo: change it back to 5 -> done to test reflexion
     handle_tool_error=True,
 )
 wikidata = WikidataQueryRun(
@@ -61,33 +61,33 @@ tools = [
             "Input should be a search query."
         )
     ),
-    Tool(
-        name="search-wikidata",
-        func=wikidata.run,
-        description=(
-            "Tool that searches the Wikidata API. "
-            "Useful for when you need to answer general questions about "
-            "people, places, companies, facts, historical events, or other subjects. "
-            "Input should be the exact name of the item you want information about "
-            "or a Wikidata QID."
-        ),
-    ),
-    Tool(
-        name="search-reddit",
-        func=lambda question: reddit.run(tool_input=RedditSearchSchema(
-            query=question, sort="new", time_filter="week", subreddit="all", limit="3"
-        ).dict()),
-        # func=reddit.run,
-        description=(
-            "A tool that searches for posts on Reddit."
-            "Useful when you need to know post information on a subreddit."
-        ),
-    ),
-    Tool(
-        name="search-google",
-        func=google_serper.run,
-        description="A search engine. Useful for when you need to answer questions about current events. Input should be a search query.",
-    ),
+    # Tool(
+    #     name="search-wikidata",
+    #     func=wikidata.run,
+    #     description=(
+    #         "Tool that searches the Wikidata API. "
+    #         "Useful for when you need to answer general questions about "
+    #         "people, places, companies, facts, historical events, or other subjects. "
+    #         "Input should be the exact name of the item you want information about "
+    #         "or a Wikidata QID."
+    #     ),
+    # ),
+    # Tool(
+    #     name="search-reddit",
+    #     func=lambda question: reddit.run(tool_input=RedditSearchSchema(
+    #         query=question, sort="new", time_filter="week", subreddit="all", limit="3"
+    #     ).dict()),
+    #     # func=reddit.run,
+    #     description=(
+    #         "A tool that searches for posts on Reddit."
+    #         "Useful when you need to know post information on a subreddit."
+    #     ),
+    # ),
+    # Tool(
+    #     name="search-google",
+    #     func=google_serper.run,
+    #     description="A search engine. Useful for when you need to answer questions about current events. Input should be a search query.",
+    # ),
     Tool(
         name="search-google-scholar",
         func=google_scholar.run,
@@ -98,17 +98,17 @@ tools = [
             "Input should be a search query."
         ),
     ),
-    Tool(
-        name="search-pubmed",
-        func=pubmed.run,
-        description=(
-            "A wrapper around PubMed. "
-            "Useful for when you need to answer questions about medicine, health, "
-            "and biomedical topics "
-            "from biomedical literature, MEDLINE, life science journals, and online books. "
-            "Input should be a search query."
-        ),
-    ),
+    # Tool(
+    #     name="search-pubmed",
+    #     func=pubmed.run,
+    #     description=(
+    #         "A wrapper around PubMed. "
+    #         "Useful for when you need to answer questions about medicine, health, "
+    #         "and biomedical topics "
+    #         "from biomedical literature, MEDLINE, life science journals, and online books. "
+    #         "Input should be a search query."
+    #     ),
+    # ),
     Tool(
         name="search-arxiv",
         func=arxiv.run,
