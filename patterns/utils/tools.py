@@ -88,16 +88,16 @@ tools = [
     #     func=google_serper.run,
     #     description="A search engine. Useful for when you need to answer questions about current events. Input should be a search query.",
     # ),
-    Tool(
-        name="search-google-scholar",
-        func=google_scholar.run,
-        description=(
-            "Tool for Google Scholar Search. "
-            "Useful for when you need to get information about"
-            "research papers from Google Scholar"
-            "Input should be a search query."
-        ),
-    ),
+    # Tool(
+    #     name="search-google-scholar",
+    #     func=google_scholar.run,
+    #     description=(
+    #         "Tool for Google Scholar Search. "
+    #         "Useful for when you need to get information about"
+    #         "research papers from Google Scholar"
+    #         "Input should be a search query."
+    #     ),
+    # ),
     # Tool(
     #     name="search-pubmed",
     #     func=pubmed.run,
