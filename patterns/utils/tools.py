@@ -43,14 +43,14 @@ wolfram = WolframAlphaAPIWrapper()
 human = HumanInputRun()
 
 tools = [
-    Tool(
-        name="code-generator-executor",
-        func=lambda question: code_tool.code_generate_and_execute(question),
-        description=(
-            "Use this to generate infographics, graphs and charts."
-            " Input should be the question itself."
-        )
-    ),
+    # Tool(
+    #     name="code-generator-executor",
+    #     func=lambda question: code_tool.code_generate_and_execute(question),
+    #     description=(
+    #         "Use this to generate infographics, graphs and charts."
+    #         " Input should be the question itself."
+    #     )
+    # ),
     Tool(
         name="search-wikipedia",
         func=wikipedia.run,
@@ -122,7 +122,7 @@ tools = [
         ),
     ),
     Tool(
-        name="wolfram-aplha",
+        name="wolfram-alpha",
         func=wolfram.run,
         description=(
             "Tool answers factual queries by computing answers from externally sourced data"
